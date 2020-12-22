@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
@@ -16,14 +18,12 @@ public class BoardTest {
     }
     @Test
     public void testSetAllDefault(){
+        int[][] correct = new int[4][3];
+        for (int[] e: correct)
+            Arrays.fill(e, -1);
         board.fill(-1);
 
-        assertEquals(board.getFields(), new int[][]{
-                {-1,-1,-1},
-                {-1,-1,-1},
-                {-1,-1,-1},
-                {-1,-1,-1}
-        });
+        assertEquals(board.getFields(), correct);
     }
     @Test
     public void testGetSizeByChar(){
