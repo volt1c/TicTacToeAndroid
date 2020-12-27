@@ -8,15 +8,15 @@ import org.junit.runners.JUnit4;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
-public class FieldTest {
+public class FieldTypeTest {
     @Test
     public void testGetFieldsByValue() {
-        Assert.assertEquals(Field.Empty,  Field.byValue(-1));
-        assertEquals(Field.Circle, Field.byValue(0));
-        assertEquals(Field.Cross,  Field.byValue(1));
+        Assert.assertEquals(FieldType.Empty,  FieldType.byValue(-1));
+        assertEquals(FieldType.Circle, FieldType.byValue(0));
+        assertEquals(FieldType.Cross,  FieldType.byValue(1));
     }
     @Test(expected = IllegalArgumentException.class)
     public void testTryGetFieldsByWrongValue() {
-        Field.byValue(Integer.MAX_VALUE);
+        FieldType.byValue(Integer.MAX_VALUE);
     }
 }

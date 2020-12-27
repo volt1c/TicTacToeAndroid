@@ -18,14 +18,14 @@ public class TicTacToeGameBoardTest {
     }
     @Test
     public void testSetCircleOnEmptyFieldAndTryOverwrite(){
-        assertTrue(gameBoard.playField(0, 0, Field.Circle));
-        assertFalse(gameBoard.playField(0, 0, Field.Cross));
+        assertTrue(gameBoard.playField(0, 0, FieldType.Circle));
+        assertFalse(gameBoard.playField(0, 0, FieldType.Cross));
     }
     @Test
     public void testGetGameBoard(){
-        Field[][] board = new Field[3][3];
-        for (Field[] e: board)
-            Arrays.fill(e, Field.Empty);
+        FieldType[][] board = new FieldType[3][3];
+        for (FieldType[] e: board)
+            Arrays.fill(e, FieldType.Empty);
 
         assertEquals(gameBoard.getGameBoard(), board);
     }

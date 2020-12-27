@@ -4,22 +4,18 @@ public class TicTacToeGameBoard {
     private Board board;
 
     public TicTacToeGameBoard(){
-        board = new Board(3, 3);
-        board.fill(Field.Empty.value);
+        board = new Board<FieldType>(3, 3);
+        board.fill(FieldType.Empty.value);
     }
 
-    public boolean playField(int width, int height, Field field){
-        if (board.getField(width, height) != Field.Empty.value)
+    public boolean playField(int width, int height, FieldType fieldType){
+        if (board.getField(width, height) != FieldType.Empty)
             return false;
-        board.setField(width, height, field.value);
+        board.setField(width, height, fieldType.value);
         return true;
     }
 
-    public Field[][] getGameBoard() {
-        Field[][] gBoard = new Field[3][3];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                gBoard[i][j] = Field.byValue(board.getField(j, i));
-        return gBoard;
+    public Board getGameBoard() {
+        return board;
     }
 }

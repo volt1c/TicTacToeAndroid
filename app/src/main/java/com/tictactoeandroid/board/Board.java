@@ -2,18 +2,18 @@ package com.tictactoeandroid.board;
 
 import java.util.Arrays;
 
-public class Board {
-    private int[][] fields;
+public class Board<TField> {
+    private Object[][] fields;
 
     public Board(int width, int height){
-        this.fields = new int[height][width];
+        this.fields = new Object[height][width];
     }
 
     public void fill(int value){
         if (fields.length == 0)
             return;
 
-        for (int[] row : fields) {
+        for (Object[] row : fields) {
             Arrays.fill(row, value);
         }
     }
@@ -29,19 +29,19 @@ public class Board {
         return fields.length;
     }
 
-    public int[][] getFields() {
-        return fields;
+    public TField[][] getFields() {
+        return (TField[][]) fields;
     }
 
-    public int getField(int width, int height){
-        return fields[height][width];
+    public TField getField(int width, int height){
+        return (TField) fields[height][width];
     }
 
-    public void setFields(int[][] fields) {
+    public void setFields(TField[][] fields) {
         this.fields = fields;
     }
 
-    public void setField(int width, int height, int value){
+    public void setField(int width, int height, TField value){
         this.fields[height][width] = value;
     }
 }
