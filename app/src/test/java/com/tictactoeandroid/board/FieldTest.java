@@ -1,7 +1,5 @@
 package com.tictactoeandroid.board;
 
-import com.tictactoeandroid.board.Field;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
