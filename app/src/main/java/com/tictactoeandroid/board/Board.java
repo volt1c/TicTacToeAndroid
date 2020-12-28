@@ -9,7 +9,7 @@ public class Board<TField> {
         this.fields = new Object[height][width];
     }
 
-    public void fill(int value){
+    public void fill(TField value){
         if (fields.length == 0)
             return;
 

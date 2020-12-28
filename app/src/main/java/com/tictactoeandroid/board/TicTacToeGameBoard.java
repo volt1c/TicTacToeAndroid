@@ -5,13 +5,13 @@ public class TicTacToeGameBoard {
 
     public TicTacToeGameBoard(){
         board = new Board<FieldType>(3, 3);
-        board.fill(FieldType.Empty.value);
+        board.fill(FieldType.Empty);
     }
 
     public boolean playField(int width, int height, FieldType fieldType){
         if (board.getField(width, height) != FieldType.Empty)
             return false;
-        board.setField(width, height, fieldType.value);
+        board.setField(width, height, fieldType);
         return true;
     }
 

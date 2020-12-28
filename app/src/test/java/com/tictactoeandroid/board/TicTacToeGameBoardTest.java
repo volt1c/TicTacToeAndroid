@@ -27,6 +27,6 @@ public class TicTacToeGameBoardTest {
         for (FieldType[] e: board)
             Arrays.fill(e, FieldType.Empty);
 
-        assertEquals(gameBoard.getGameBoard(), board);
+        assertEquals(gameBoard.getGameBoard().getFields(), board);
     }
 }
