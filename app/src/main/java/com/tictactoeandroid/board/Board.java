@@ -10,9 +10,6 @@ public class Board<TField> {
     }
 
     public void fill(TField value){
-        if (fields.length == 0)
-            return;
-
         for (Object[] row : fields) {
             Arrays.fill(row, value);
         }
