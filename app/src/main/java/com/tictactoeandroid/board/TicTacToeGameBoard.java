@@ -15,6 +15,7 @@ public class TicTacToeGameBoard {
         return true;
     }
 
+
     public Board getGameBoard() {
         return board;
     }
