@@ -34,6 +34,12 @@ public class BoardTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetSizeByIllegalArgument(){
         board.size('x');
+    }
 
+    @Test
+    public void testClone(){
+        Board clone = board.clone();
+
+        assertEquals(board.getFields(), clone.getFields());
     }
 }

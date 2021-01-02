@@ -8,11 +8,18 @@ public class Board<TField> {
     public Board(int width, int height){
         this.fields = new Object[height][width];
     }
+    protected Board(Object[][] fields){
+        this.fields = fields;
+    }
 
     public void fill(TField value){
         for (Object[] row : fields) {
             Arrays.fill(row, value);
         }
+    }
+
+    public Board<TField> clone(){
+        return new Board<TField>(fields);
     }
 
     public int size(char t){
