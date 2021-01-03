@@ -6,7 +6,7 @@ import com.tictactoeandroid.player.Player;
 
 import java.util.Stack;
 
-public class TicTacToeGame {
+public class TicTacToeGameBoard {
     private Board board;
     private Stack<Play> plays;
 
@@ -22,7 +22,7 @@ public class TicTacToeGame {
         return true;
     }
 
-    public boolean playThePlay(Play play){
+    public boolean play(Play play){
         return playField(play.width, play.height, play.fieldType);
     }
 
@@ -44,7 +44,7 @@ public class TicTacToeGame {
         );
     }
 
-    public TicTacToeGame(){
+    public TicTacToeGameBoard(){
         plays = new Stack<Play>();
         board = new Board<FieldType>(3, 3, FieldType.Empty);
         board.fill(FieldType.Empty);
