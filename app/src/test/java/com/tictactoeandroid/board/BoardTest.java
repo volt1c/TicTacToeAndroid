@@ -14,7 +14,7 @@ public class BoardTest {
     Board board;
     @Before
     public void init(){
-         board = new Board(3,4);
+         board = new Board(3,4, 0);
     }
     @Test
     public void testSetAllDefault(){
@@ -27,8 +27,8 @@ public class BoardTest {
     }
     @Test
     public void testGetSizeByChar(){
-        assertEquals(board.size('r'),3); // row
-        assertEquals(board.size('c'),4); // column
+        assertEquals(board.size('w'),3); // W-idth
+        assertEquals(board.size('h'),4); // H-eight
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -42,4 +42,17 @@ public class BoardTest {
 
         assertEquals(board.getFields(), clone.getFields());
     }
+
+    @Test
+    public void testIsEmptyWhenEmpty(){
+        assertTrue(board.isEmpty());
+    }
+
+    @Test
+    public void testIsEmptyWhenNotEmpty(){
+        board.setField(0, 0,1);
+
+        assertFalse(board.isEmpty());
+    }
+
 }

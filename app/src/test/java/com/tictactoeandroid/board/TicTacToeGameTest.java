@@ -1,5 +1,7 @@
 package com.tictactoeandroid.board;
 
+import com.tictactoeandroid.game.TicTacToeGame;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,7 @@
-package com.tictactoeandroid.board;
+package com.tictactoeandroid.game;
 
+import com.tictactoeandroid.board.Board;
+import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.player.Player;
 
 import java.util.Stack;
@@ -20,10 +22,13 @@ public class TicTacToeGame {
         return true;
     }
 
+    public boolean playThePlay(Play play){
+        return playField(play.width, play.height, play.fieldType);
+    }
+
     public boolean playCircle(int width, int height){
         return playField(width, height, FieldType.Circle);
     }
-
     public boolean playCross(int width, int height){
         return playField(width, height, FieldType.Cross);
     }
@@ -41,19 +46,7 @@ public class TicTacToeGame {
 
     public TicTacToeGame(){
         plays = new Stack<Play>();
-        board = new Board<FieldType>(3, 3);
+        board = new Board<FieldType>(3, 3, FieldType.Empty);
         board.fill(FieldType.Empty);
-    }
-
-    private class Play {
-        public int width;
-        public int height;
-        public FieldType fieldType;
-
-        public Play(int width, int height, FieldType fieldType){
-            this.width = width;
-            this.height = height;
-            this.fieldType = fieldType;
-        }
     }
 }

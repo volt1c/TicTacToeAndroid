@@ -1,8 +1,7 @@
 package com.tictactoeandroid.player;
 
-public class UserPlayer implements  Player{
-    @Override
-    public void play() {
+import com.tictactoeandroid.board.Board;
+import com.tictactoeandroid.game.Play;
 
-    }
+public class UserPlayer{
 }
