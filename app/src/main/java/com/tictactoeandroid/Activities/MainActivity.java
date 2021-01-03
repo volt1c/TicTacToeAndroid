@@ -1,4 +1,4 @@
-package com.tictactoeandroid;
+package com.tictactoeandroid.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGame(View view){
-        Intent intent = new Intent(MainActivity.this,GameActivity.class);
+        Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
         finish();
     }
