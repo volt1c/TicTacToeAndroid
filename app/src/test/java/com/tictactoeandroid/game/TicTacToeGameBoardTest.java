@@ -1,6 +1,6 @@
-package com.tictactoeandroid.board;
+package com.tictactoeandroid.game;
 
-import com.tictactoeandroid.game.TicTacToeGameBoard;
+import com.tictactoeandroid.board.FieldType;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -4,6 +4,6 @@ import com.tictactoeandroid.board.Board;
 import com.tictactoeandroid.game.Play;
 
 public interface Player {
-    Play play(Object[][] board);
+    Play play(Board board);
 
 }

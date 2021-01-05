@@ -52,7 +52,9 @@ public class Board<TField> {
     public void setField(int width, int height, TField value){
         this.fields[height][width] = value;
     }
-
+    public  boolean isFieldEmpty(int width, int height){
+        return !(getField(width, height) == defValue);
+    }
     public boolean isEmpty(){
         return Arrays.deepEquals(fields, new Board<TField>(width, height, defValue).getFields());
     }
