@@ -1,4 +1,4 @@
-package com.tictactoeandroid.Activities;
+package com.tictactoeandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
