@@ -20,8 +20,8 @@ public class BoardTest {
     public void testSetAllDefault(){
         int[][] correct = new int[4][3];
         for (int[] e: correct)
-            Arrays.fill(e, -1);
-        board.fill(-1);
+            Arrays.fill(e, 0);
+        board.fill(0);
 
         assertEquals(board.getFields(), correct);
     }
@@ -44,7 +44,7 @@ public class BoardTest {
     }
 
     @Test
-    public void testIsEmptyWhenEmpty(){
+    public void testCheckIsEmptyWhenEmpty(){
         assertTrue(board.isEmpty());
     }
 
@@ -55,4 +55,22 @@ public class BoardTest {
         assertFalse(board.isEmpty());
     }
 
+    @Test
+    public void testCheckIsEmptyWorkOnEmptyField(){
+        assertTrue(board.isFieldEmpty(0,0));
+        assertTrue(board.isFieldEmpty(2,3));
+    }
+
+    @Test
+    public void testCheckIsEmptyBoardFull(){
+        assertFalse(board.isFull());
+    }
+
+    @Test
+    public void testCheckIsFullBoardFull(){
+        board.fill(2);
+        board.setField(1,1,1);
+
+        assertTrue(board.isFull());
+    }
 }
