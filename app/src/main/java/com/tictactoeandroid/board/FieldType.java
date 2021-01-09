@@ -1,19 +1,19 @@
 package com.tictactoeandroid.board;
 
 public enum FieldType {
-    Empty(-1),
-    Circle(0),
-    Cross(1);
+    Empty(' '),
+    Circle('O'),
+    Cross('X');
 
-    final int value;
+    public final char aChar;
 
-    private FieldType(int i) {
-        this.value = i;
+    private FieldType(char c) {
+        this.aChar = c;
     }
 
-    public static FieldType byValue(int value) {
+    public static FieldType byValue(char value) {
         for (FieldType e : values()) {
-            if (e.value == value) {
+            if (e.aChar == value) {
                 return e;
             }
         }
