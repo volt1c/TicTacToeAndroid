@@ -1,6 +1,7 @@
-package com.tictactoeandroid.game;
+package com.tictactoeandroid.board;
 
 import com.tictactoeandroid.board.FieldType;
+import com.tictactoeandroid.game.Play;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,13 +21,13 @@ public class TicTacToeGameBoardTest {
     }
     @Test
     public void testSetCircleOnEmptyFieldAndTryOverwriteCross(){
-        assertTrue(gameBoard.playCircle(0, 0));
-        assertFalse(gameBoard.playCross(0, 0));
+        assertTrue(gameBoard.play(new Play(0,0, FieldType.Circle)));
+        assertFalse(gameBoard.play(new Play(0,0, FieldType.Cross)));
     }
     @Test
     public void testSetCrossOnEmptyFieldAndTryOverwriteCircle(){
-        assertTrue(gameBoard.playCircle(0, 0));
-        assertFalse(gameBoard.playCross(0, 0));
+        assertTrue(gameBoard.play(new Play(0,0, FieldType.Cross)));
+        assertFalse(gameBoard.play(new Play(0,0, FieldType.Circle)));
     }
     @Test
     public void testGetGameBoard(){
@@ -38,8 +39,8 @@ public class TicTacToeGameBoardTest {
     }
     @Test
     public void testPlayFieldsThenCancelLastPlay(){
-        gameBoard.playCircle(0,0);
-        gameBoard.playCross(2, 2);
+        gameBoard.play(new Play(0,0, FieldType.Circle));
+        gameBoard.play(new Play(2,2, FieldType.Cross));
 
         assertEquals(gameBoard.getGameBoard().getField(0, 0), FieldType.Circle);
         assertEquals(gameBoard.getGameBoard().getField(2, 2), FieldType.Cross);
