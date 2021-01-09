@@ -1,29 +1,50 @@
 package com.tictactoeandroid.game;
 
 import com.tictactoeandroid.board.Board;
-import com.tictactoeandroid.board.FieldType;
+import com.tictactoeandroid.board.TicTacToeGameBoard;
 import com.tictactoeandroid.player.Player;
 
 public class TicTacToeGame {
     private TicTacToeGameBoard gameBoard;
     private Player playerOne;
     private Player playerTwo;
-    private boolean isLastPlayedOne;
+    private Object endResult;
 
-    public void playTurn(){
-        Player player = getPlayerForThisTurn();
-        Board board = gameBoard.getGameBoard();
-        player.play(board);
+    public Player getPlayerOne() {
+        return playerOne;
     }
-
-    private Player getPlayerForThisTurn(){
-        return isLastPlayedOne? playerOne : playerTwo;
+    public Player getPlayerTwo() {
+        return playerTwo;
+    }
+    private boolean play(Play play){
+        return gameBoard.play(play);
+    }
+    public boolean playOne(int x, int y){
+        return play(playerOne.play(copyBoard(), x, y));
+    }
+    public boolean playTwo(int x, int y){
+        return play(playerTwo.play(copyBoard(), x, y));
+    }
+    public boolean isEnd(){
+        // TODO
+        // check is there 3 Circles/Crosses in line
+        // and is board full
+        // set result
+        return false;
+    }
+    /*public Object getEndResult() {
+        // TODO
+        // First create GameResult class/enum
+        // Then
+        return endResult;
+    }*/
+    public Board copyBoard(){
+        return gameBoard.getGameBoard();
     }
 
     public TicTacToeGame(Player playerOne, Player playerTwo){
         gameBoard = new TicTacToeGameBoard();
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        isLastPlayedOne = false;
     }
 }
