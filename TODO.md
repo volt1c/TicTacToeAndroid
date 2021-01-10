@@ -3,7 +3,6 @@
 * TicTacToeGame.java : line 34
 * new class PlayerType.java
 * new class PlayerFactory.java
-* new class/enum GameResult.java
 
 ### Dawid-Czyzewski
 * GameActivity.java : line 62
