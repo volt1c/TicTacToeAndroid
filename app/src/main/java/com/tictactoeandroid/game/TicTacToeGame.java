@@ -8,7 +8,7 @@ public class TicTacToeGame {
     private TicTacToeGameBoard gameBoard;
     private Player playerOne;
     private Player playerTwo;
-    private Object endResult;
+    private Result endResult;
 
     public Player getPlayerOne() {
         return playerOne;
@@ -32,12 +32,9 @@ public class TicTacToeGame {
         // set result
         return false;
     }
-    /*public Object getEndResult() {
-        // TODO
-        // First create GameResult class/enum
-        // Then
+    public Result getEndResult() {
         return endResult;
-    }*/
+    }
     public Board copyBoard(){
         return gameBoard.getGameBoard();
     }
@@ -46,5 +43,6 @@ public class TicTacToeGame {
         gameBoard = new TicTacToeGameBoard();
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.endResult = Result.None;
     }
 }
