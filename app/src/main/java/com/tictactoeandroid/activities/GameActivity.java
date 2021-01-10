@@ -3,6 +3,7 @@ package com.tictactoeandroid.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.tictactoeandroid.R;
 import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.game.GameResult;
 import com.tictactoeandroid.game.TicTacToeGame;
+import com.tictactoeandroid.player.PlayerType;
 import com.tictactoeandroid.player.RandomAIPlayer;
 import com.tictactoeandroid.player.UserPlayer;
 
@@ -24,7 +26,9 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        // PlayerType playerType = PlayerType.getByInt(/* here int */)
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+
+        PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
 
         // TODO
         // capture data from the form,
