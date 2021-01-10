@@ -67,6 +67,7 @@ public class GameActivity extends AppCompatActivity {
         editor.putInt("gameResult",result);
         Intent intent = new Intent(this,EndGameActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void play(int x, int y){
