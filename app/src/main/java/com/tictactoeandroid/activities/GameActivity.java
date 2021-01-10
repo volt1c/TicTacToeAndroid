@@ -2,12 +2,16 @@ package com.tictactoeandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.tictactoeandroid.R;
 import com.tictactoeandroid.board.FieldType;
+import com.tictactoeandroid.game.GameResult;
 import com.tictactoeandroid.game.TicTacToeGame;
 import com.tictactoeandroid.player.RandomAIPlayer;
 import com.tictactoeandroid.player.UserPlayer;
@@ -57,9 +61,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void end(){
-        // TODO
-        // opens the EndGameActivity
-        // forwards the results there
+        int result = game.getEndResult().i;
+        SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("gameResult",result);
+        Intent intent = new Intent(this,EndGameActivity.class);
+        startActivity(intent);
     }
 
     public void play(int x, int y){
