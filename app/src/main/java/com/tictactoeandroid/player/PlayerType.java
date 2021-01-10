@@ -23,7 +23,7 @@ public enum PlayerType {
         this.board = board;
     }
 
-    public static PlayerType findByInt(char value) {
+    public static PlayerType findByInt(int value) {
         for (PlayerType e : values()) {
             if (e.id == value) {
                 return e;
