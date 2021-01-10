@@ -23,6 +23,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        // PlayerType playerType = PlayerType.getByInt(/* here int */)
+
         // TODO
         // capture data from the form,
         // with the help of the abstract factory prepare the appropriate objects
