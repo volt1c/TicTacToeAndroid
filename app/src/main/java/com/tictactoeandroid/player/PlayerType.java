@@ -9,21 +9,22 @@ public enum PlayerType {
     User(1);
 
     public final int id;
-    public int x;
-    public int y;
-    public Board<FieldType> board;
+    public FieldType type;
+
 
     PlayerType(int id) {
         this.id = id;
     }
 
-    void setValues(int x, int y, Board<FieldType> board){
-        this.x = x;
-        this.y = y;
-        this.board = board;
+    void setType(FieldType type)
+        throws IllegalArgumentException{
+        if (type == FieldType.Empty)
+            throw new IllegalArgumentException();
+        this.type = type;
     }
 
-    public static PlayerType findByInt(int value) {
+    public static PlayerType findByInt(int value)
+            throws IllegalArgumentException{
         for (PlayerType e : values()) {
             if (e.id == value) {
                 return e;

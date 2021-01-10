@@ -13,7 +13,10 @@ import android.widget.Button;
 import com.tictactoeandroid.R;
 import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.game.GameResult;
+import com.tictactoeandroid.game.Play;
 import com.tictactoeandroid.game.TicTacToeGame;
+import com.tictactoeandroid.player.Player;
+import com.tictactoeandroid.player.PlayerFactory;
 import com.tictactoeandroid.player.PlayerType;
 import com.tictactoeandroid.player.RandomAIPlayer;
 import com.tictactoeandroid.player.UserPlayer;
@@ -25,20 +28,12 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-
         PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
-
-        // TODO
-        // capture data from the form,
-        // with the help of the abstract factory prepare the appropriate objects
-        // start
-        game = new TicTacToeGame(
-                new UserPlayer(FieldType.Cross),
-                new RandomAIPlayer(FieldType.Circle)
-        );
-        // end
+        playerType.type = FieldType.Circle;
+        Player playerOne = new UserPlayer(FieldType.Cross);
+        Player playerTwo = new PlayerFactory().create(playerType);
+        game = new TicTacToeGame(playerOne, playerTwo);
         isLastPlayOne = false;
         updateGUIBoard();
     }

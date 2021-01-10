@@ -1,6 +1,8 @@
 package com.tictactoeandroid;
 
+import androidx.annotation.NonNull;
+
 public interface AbstractFactory<TReturn,TArgument> {
-    TReturn create(TArgument arg)
+    TReturn create(@NonNull TArgument arg)
             throws ClassNotFoundException;
 }
