@@ -32,10 +32,19 @@ public class GameActivity extends AppCompatActivity {
         PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
         playerType.type = FieldType.Circle;
         Player playerOne = new UserPlayer(FieldType.Cross);
-        Player playerTwo = new PlayerFactory().create(playerType);
+
+        Player playerTwo = getPlayer(playerType);
         game = new TicTacToeGame(playerOne, playerTwo);
         isLastPlayOne = false;
         updateGUIBoard();
+    }
+
+    public Player getPlayer(PlayerType type){
+        try {
+            return new PlayerFactory().create(type);
+        } catch (ClassCastException ex){
+            return new UserPlayer(type.type);
+        }
     }
 
     private void updateButton(int buttonId,int x, int y){
@@ -75,15 +84,17 @@ public class GameActivity extends AppCompatActivity {
     public void play(int x, int y){
         if (game.isEnd()) end();
         if(!isLastPlayOne || !(game.getPlayerTwo() instanceof UserPlayer)){
-            while (!game.playOne(x, y));
+            if(game.playOne(x, y))
+                isLastPlayOne = !isLastPlayOne;
             updateGUIBoard();
         }
         if (game.isEnd()) end();
         if(isLastPlayOne || game.getPlayerOne() instanceof UserPlayer){
-            while (!game.playTwo(x,y));
+            if(game.playTwo(x, y))
+                isLastPlayOne = !isLastPlayOne;
             updateGUIBoard();
         }
-        isLastPlayOne = !isLastPlayOne;
+
         if(!(game.getPlayerOne() instanceof UserPlayer) && !(game.getPlayerTwo() instanceof UserPlayer))
             play(0,0);
     }

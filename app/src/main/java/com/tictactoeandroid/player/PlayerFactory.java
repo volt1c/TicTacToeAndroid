@@ -6,7 +6,7 @@ import com.tictactoeandroid.AbstractFactory;
 
 public class PlayerFactory implements AbstractFactory<Player, PlayerType> {
     @Override
-    public Player create(@NonNull PlayerType arg){
+    public Player create(@NonNull PlayerType arg) throws ClassCastException{
         switch (arg){
             case User:
                 new UserPlayer(arg.type);
