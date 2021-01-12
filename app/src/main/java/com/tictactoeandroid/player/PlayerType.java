@@ -9,19 +9,6 @@ public enum PlayerType {
     User(1);
 
     public final int id;
-    public FieldType type;
-
-
-    PlayerType(int id) {
-        this.id = id;
-    }
-
-    void setType(FieldType type)
-        throws IllegalArgumentException{
-        if (type == FieldType.Empty)
-            throw new IllegalArgumentException();
-        this.type = type;
-    }
 
     public static PlayerType findByInt(int value)
             throws IllegalArgumentException{
@@ -31,5 +18,8 @@ public enum PlayerType {
             }
         }
         throw new IllegalArgumentException();
+    }
+    PlayerType(int id) {
+        this.id = id;
     }
 }

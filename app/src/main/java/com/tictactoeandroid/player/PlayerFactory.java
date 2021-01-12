@@ -4,14 +4,14 @@ import androidx.annotation.NonNull;
 
 import com.tictactoeandroid.AbstractFactory;
 
-public class PlayerFactory implements AbstractFactory<Player, PlayerType> {
+public class PlayerFactory implements AbstractFactory<Player, PlayerData> {
     @Override
-    public Player create(@NonNull PlayerType arg) throws ClassCastException{
-        switch (arg){
+    public Player create(@NonNull PlayerData arg) throws ClassCastException{
+        switch (arg.type){
             case User:
-                new UserPlayer(arg.type);
+                return new UserPlayer(arg.mark.mark);
             case RandomAI:
-                new RandomAIPlayer(arg.type);
+                return new RandomAIPlayer(arg.mark.mark);
         }
         throw new ClassCastException();
     }

@@ -16,7 +16,9 @@ import com.tictactoeandroid.game.GameResult;
 import com.tictactoeandroid.game.Play;
 import com.tictactoeandroid.game.TicTacToeGame;
 import com.tictactoeandroid.player.Player;
+import com.tictactoeandroid.player.PlayerData;
 import com.tictactoeandroid.player.PlayerFactory;
+import com.tictactoeandroid.player.PlayerMark;
 import com.tictactoeandroid.player.PlayerType;
 import com.tictactoeandroid.player.RandomAIPlayer;
 import com.tictactoeandroid.player.UserPlayer;
@@ -29,22 +31,16 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-        PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
-        playerType.type = FieldType.Circle;
-        Player playerOne = new UserPlayer(FieldType.Cross);
 
-        Player playerTwo = getPlayer(playerType);
+        PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
+        PlayerData data = new PlayerData(playerType, PlayerMark.Circle);
+
+        Player playerOne = new UserPlayer(FieldType.Cross);
+        Player playerTwo = new PlayerFactory().create(data);
+
         game = new TicTacToeGame(playerOne, playerTwo);
         isLastPlayOne = false;
         updateGUIBoard();
-    }
-
-    public Player getPlayer(PlayerType type){
-        try {
-            return new PlayerFactory().create(type);
-        } catch (ClassCastException ex){
-            return new UserPlayer(type.type);
-        }
     }
 
     private void updateButton(int buttonId,int x, int y){
