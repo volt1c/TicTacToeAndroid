@@ -30,9 +30,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
 
-        PlayerType playerType = PlayerType.findByInt(sp.getInt("PlayerType",1));
+        PlayerType playerType = PlayerType.findByInt(sharedPreferences.getInt("PlayerType",0));
         PlayerData data = new PlayerData(playerType, PlayerMark.Circle);
 
         Player playerOne = new UserPlayer(FieldType.Cross);
@@ -72,6 +72,7 @@ public class GameActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("gameResult",result);
+        editor.apply();
         Intent intent = new Intent(this,EndGameActivity.class);
         startActivity(intent);
         finish();
