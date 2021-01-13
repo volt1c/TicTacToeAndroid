@@ -1,10 +1,9 @@
 ## TODO list
 ### Agil-Dev
-* TicTacToeGame.java : line 34
-* new class PlayerType.java
-* new class PlayerFactory.java
+* Fix draw with bot error
+* Refactoring
+* Prepare setting GameResult in TicTacToeGame
 
 ### Dawid-Czyzewski
-* GameActivity.java : line 62
-* design activity_end_game.xml <br> shows board and game result (only design)
-* design activity_game_type_menu.xml <br> shows form chose type of opponnent (only design)
+* design activity_end_game.xml <br> shows board and game result, who win Cross/Circle <br> appearance and mechanics.
+* Refactoring
