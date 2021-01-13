@@ -14,7 +14,7 @@ public class Board<TField> {
         }
     }
     public Board<TField> clone(){
-        return new Board<TField>(fields, defValue);
+        return new Board<TField>(width, height, fields, defValue);
     }
     public int size(char t){
 
@@ -56,7 +56,9 @@ public class Board<TField> {
         this.height = height;
         fill(defValue);
     }
-    protected Board(Object[][] fields,TField defValue){
+    protected Board(int width, int height, Object[][] fields,TField defValue){
+        this.width = width;
+        this.height = height;
         this.fields = fields;
         this.defValue = defValue;
     }

@@ -67,10 +67,14 @@ public class BoardTest {
     }
 
     @Test
-    public void testCheckIsFullBoardFull(){
+    public void testCheckIsFullWhenBoardFull(){
         board.fill(2);
         board.setField(1,1,1);
 
         assertTrue(board.isFull());
+    }
+    @Test
+    public void testCheckIsFullWhenBoardEmpty(){
+        assertFalse(board.isFull());
     }
 }
