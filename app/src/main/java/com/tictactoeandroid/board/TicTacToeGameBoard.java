@@ -38,6 +38,5 @@ public class TicTacToeGameBoard {
     public TicTacToeGameBoard(){
         plays = new Stack<Play>();
         board = new Board<FieldType>(3, 3, FieldType.Empty);
-        board.fill(FieldType.Empty);
     }
 }
