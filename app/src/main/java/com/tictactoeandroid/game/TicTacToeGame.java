@@ -1,6 +1,7 @@
 package com.tictactoeandroid.game;
 
 import com.tictactoeandroid.board.Board;
+import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.board.TicTacToeGameBoard;
 import com.tictactoeandroid.player.Player;
 
@@ -25,11 +26,35 @@ public class TicTacToeGame {
     public boolean playTwo(int x, int y){
         return play(playerTwo.play(copyBoard(), x, y));
     }
+    private boolean isRowEndGame(int id, FieldType value){
+        Board board = gameBoard.getGameBoard();
+        for(int i = 0; i < 3; i++)
+            if(board.getField(id, i) != value)
+                return false;
+        return true;
+    }
+    private boolean isColumnEndGame(int id, FieldType value){
+        Board board = gameBoard.getGameBoard();
+        for(int i = 0; i < 3; i++)
+            if(board.getField(i, id) != value)
+                return false;
+        return true;
+    }
+    private boolean areSlantsEndGame(FieldType type){
+        Board board = gameBoard.getGameBoard();
+        return (board.getField(0,0) == type && board.getField(1,1) == type && board.getField(2,2) == type) ||
+                (board.getField(2,0) == type && board.getField(1,1) == type && board.getField(0,2) == type);
+    }
     public boolean isEnd(){
-        // TODO
-        // check is there 3 Circles/Crosses in line
-        // and is board full
-        // set result
+        Board board = gameBoard.getGameBoard();
+        for (int i = 0; i < 3; i++) {
+            if (isRowEndGame(i, FieldType.Circle) || isColumnEndGame(i, FieldType.Circle) || areSlantsEndGame(FieldType.Circle))
+                return true;
+            if(isRowEndGame(i, FieldType.Cross) || isColumnEndGame(i, FieldType.Cross) || areSlantsEndGame(FieldType.Cross))
+                return true;
+        }
+        if(board.isFull())
+            return true;
         return false;
     }
     public GameResult getEndResult() {
