@@ -2,8 +2,8 @@ package com.tictactoeandroid.game;
 
 public enum GameResult {
     None(-1),
-    WinOne(0),
-    WinTwo(1),
+    CrossWin(0),
+    CircleWin(1),
     Draw(2);
 
     public final int i;
