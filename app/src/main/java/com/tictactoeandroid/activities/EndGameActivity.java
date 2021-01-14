@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.tictactoeandroid.R;
 
@@ -17,5 +19,13 @@ public class EndGameActivity extends AppCompatActivity {
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         int result = sp.getInt("gameResult",0);
+        TextView text= (TextView) findViewById(R.id.textView3);
+        if(result==-1){
+            text.setText("X Wins");
+        }
+        if(result!=-1){
+            text.setText("O Wins");
+        }
+
     }
 }
