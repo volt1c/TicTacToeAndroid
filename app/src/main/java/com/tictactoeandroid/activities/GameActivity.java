@@ -42,14 +42,12 @@ public class GameActivity extends AppCompatActivity {
         isLastPlayOne = false;
         updateGUIBoard();
     }
-
     private void updateButton(int buttonId,int x, int y){
         ((Button) findViewById(buttonId))
                 .setText(fieldToString(
                 (FieldType) game.copyBoard()
                         .getField(x,y)));
     }
-
     public void updateGUIBoard(){
         updateButton(R.id.button1,0,0);
         updateButton(R.id.button2,1,0);
@@ -62,11 +60,9 @@ public class GameActivity extends AppCompatActivity {
         updateButton(R.id.button9,2,2);
 
     }
-
     private String fieldToString(FieldType fieldType){
         return String.valueOf(fieldType.aChar);
     }
-
     private void end(){
         int result = game.getEndResult().i;
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
@@ -77,25 +73,24 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
-    public void play(int x, int y){
-        if(!isLastPlayOne || !(game.getPlayerTwo() instanceof UserPlayer)){
-            if(game.playOne(x, y))
-                isLastPlayOne = !isLastPlayOne;
-            updateGUIBoard();
-        }
-        if (game.isEnd()) end();
-        if(isLastPlayOne || game.getPlayerOne() instanceof UserPlayer){
-            if(game.playTwo(x, y))
-                isLastPlayOne = !isLastPlayOne;
-            updateGUIBoard();
-        }
-        if (game.isEnd()) end();
-
-        if(!(game.getPlayerOne() instanceof UserPlayer) && !(game.getPlayerTwo() instanceof UserPlayer))
-            play(0,0);
+    private void playPlayer(int x, int y, int playerId){
+        if((playerId == 1)? game.playOne(x, y) : game.playTwo(x, y))
+            isLastPlayOne = !isLastPlayOne;
+        updateGUIBoard();
     }
+    public void play(int x, int y){
+        if(!isLastPlayOne || !(game.getPlayerOne() instanceof UserPlayer)){
+            playPlayer(x, y, 1);
+        }
+        if (game.isEnd()) end();
+        if(isLastPlayOne || game.getPlayerTwo() instanceof UserPlayer){
+            playPlayer(x, y, 2);
+        }
+        if (game.isEnd()) end();
 
+        //if(!(game.getPlayerOne() instanceof UserPlayer) && !(game.getPlayerTwo() instanceof UserPlayer))
+        //    play(0,0);
+    }
     public void play1(View view){
         play(0, 0);
     }
