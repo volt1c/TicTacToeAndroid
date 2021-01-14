@@ -6,9 +6,8 @@ import com.tictactoeandroid.game.Play;
 
 public class UserPlayer implements Player{
     PlayerMark mark;
-    // TODO
     public Play play(Board board, int x, int y) {
-        return new Play(x, y, mark.mark);
+        return new Play(x, y, mark.toFieldType());
     }
 
     public UserPlayer(PlayerMark mark){
