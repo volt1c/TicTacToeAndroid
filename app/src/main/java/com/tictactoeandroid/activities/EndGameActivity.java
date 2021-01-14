@@ -3,6 +3,7 @@ package com.tictactoeandroid.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -30,5 +31,17 @@ public class EndGameActivity extends AppCompatActivity {
             text.setText("Draw");
         }
 
+    }
+
+    public void playAgain(View view){
+        Intent intent = new Intent(this,GameActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void BackToMenu(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
