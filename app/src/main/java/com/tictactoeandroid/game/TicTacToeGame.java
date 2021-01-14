@@ -48,16 +48,23 @@ public class TicTacToeGame {
     public boolean isEnd(){
         Board board = gameBoard.getGameBoard();
         for (int i = 0; i < 3; i++) {
-            if (isRowEndGame(i, FieldType.Circle) || isColumnEndGame(i, FieldType.Circle) || areSlantsEndGame(FieldType.Circle))
+            if (isRowEndGame(i, FieldType.Circle) || isColumnEndGame(i, FieldType.Circle) || areSlantsEndGame(FieldType.Circle)) {
+                endResult = GameResult.CircleWin;
                 return true;
-            if(isRowEndGame(i, FieldType.Cross) || isColumnEndGame(i, FieldType.Cross) || areSlantsEndGame(FieldType.Cross))
+            }
+            if(isRowEndGame(i, FieldType.Cross) || isColumnEndGame(i, FieldType.Cross) || areSlantsEndGame(FieldType.Cross)) {
+                endResult = GameResult.CrossWin;
                 return true;
+            }
         }
-        if(board.isFull())
+        if(board.isFull()) {
+            endResult = GameResult.Draw;
             return true;
+        }
         return false;
     }
     public GameResult getEndResult() {
+        isEnd();
         return endResult;
     }
     public Board copyBoard(){
