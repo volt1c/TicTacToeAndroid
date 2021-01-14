@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
         PlayerType playerType = PlayerType.findByInt(sharedPreferences.getInt("PlayerType",0));
         PlayerData data = new PlayerData(playerType, PlayerMark.Circle);
 
-        Player playerOne = new UserPlayer(FieldType.Cross);
+        Player playerOne = new UserPlayer(PlayerMark.Cross);
         Player playerTwo = new PlayerFactory().create(data);
 
         game = new TicTacToeGame(playerOne, playerTwo);

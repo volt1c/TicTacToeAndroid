@@ -9,9 +9,9 @@ public class PlayerFactory implements AbstractFactory<Player, PlayerData> {
     public Player create(@NonNull PlayerData arg) throws ClassCastException{
         switch (arg.type){
             case User:
-                return new UserPlayer(arg.mark.mark);
+                return new UserPlayer(arg.mark);
             case RandomAI:
-                return new RandomAIPlayer(arg.mark.mark);
+                return new RandomAIPlayer(arg.mark);
         }
         throw new ClassCastException();
     }

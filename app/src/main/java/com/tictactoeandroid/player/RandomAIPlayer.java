@@ -7,7 +7,7 @@ import com.tictactoeandroid.game.Play;
 import java.util.Random;
 
 public class RandomAIPlayer implements Player{
-    private FieldType type;
+    private PlayerMark mark;
 
     public Play play(Board board, int x, int y){
         Random rand = new Random();
@@ -21,16 +21,14 @@ public class RandomAIPlayer implements Player{
                 height = next(height);
             }
         }
-        return new Play(width, height, type);
+        return new Play(width, height, mark.mark);
     }
 
     private int next(int value){
         return (value == 2)? 0 : value + 1;
     }
 
-    public RandomAIPlayer(FieldType type){
-        if (type == FieldType.Empty)
-            throw new IllegalArgumentException();
-        this.type = type;
+    public RandomAIPlayer(PlayerMark mark){
+        this.mark = mark;
     }
 }

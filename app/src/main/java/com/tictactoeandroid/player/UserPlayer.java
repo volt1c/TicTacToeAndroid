@@ -5,15 +5,13 @@ import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.game.Play;
 
 public class UserPlayer implements Player{
-    FieldType type;
+    PlayerMark mark;
     // TODO
     public Play play(Board board, int x, int y) {
-        return new Play(x, y, type);
+        return new Play(x, y, mark.mark);
     }
 
-    public UserPlayer(FieldType type){
-        if(type == FieldType.Empty)
-            throw new IllegalArgumentException();
-        this.type = type;
+    public UserPlayer(PlayerMark mark){
+        this.mark = mark;
     }
 }

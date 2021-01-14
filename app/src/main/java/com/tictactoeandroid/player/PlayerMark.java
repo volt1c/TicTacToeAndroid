@@ -6,9 +6,13 @@ public enum PlayerMark {
     Circle(FieldType.Circle),
     Cross(FieldType.Cross);
 
-    public final FieldType mark;
+    private final FieldType fieldType;
+
+    public FieldType toFieldType(){
+        return this.fieldType;
+    }
 
     PlayerMark(FieldType mark) {
-        this.mark = mark;
+        this.fieldType = mark;
     }
 }
