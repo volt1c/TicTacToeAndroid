@@ -79,7 +79,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void play(int x, int y){
-        if (game.isEnd()) end();
         if(!isLastPlayOne || !(game.getPlayerTwo() instanceof UserPlayer)){
             if(game.playOne(x, y))
                 isLastPlayOne = !isLastPlayOne;
@@ -91,6 +90,7 @@ public class GameActivity extends AppCompatActivity {
                 isLastPlayOne = !isLastPlayOne;
             updateGUIBoard();
         }
+        if (game.isEnd()) end();
 
         if(!(game.getPlayerOne() instanceof UserPlayer) && !(game.getPlayerTwo() instanceof UserPlayer))
             play(0,0);
