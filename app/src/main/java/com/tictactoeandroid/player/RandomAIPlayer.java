@@ -21,7 +21,7 @@ public class RandomAIPlayer implements Player{
                 height = next(height);
             }
         }
-        return new Play(width, height, mark.mark);
+        return new Play(width, height, mark.toFieldType());
     }
 
     private int next(int value){
