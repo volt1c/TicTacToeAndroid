@@ -13,11 +13,7 @@ public class UserPlayerTest {
     UserPlayer player;
     @Before
     public void init(){
-        player = new UserPlayer(FieldType.Cross);
-    }
-    @Test(expected = IllegalArgumentException.class)
-    public void testIllegalArgumentForConstructor(){
-        new UserPlayer(FieldType.Empty);
+        player = new UserPlayer(PlayerMark.Cross);
     }
     @Test
     public void testGeneratePlayObjectByCoordinates(){

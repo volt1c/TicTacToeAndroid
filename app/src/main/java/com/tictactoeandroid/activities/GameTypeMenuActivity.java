@@ -10,16 +10,11 @@ import android.view.View;
 import com.tictactoeandroid.R;
 
 public class GameTypeMenuActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_type_menu);
-
-
-
     }
-
     public void SelectPlayer(View view){
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -29,7 +24,6 @@ public class GameTypeMenuActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
     public void SelectAiPlayer(View view){
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

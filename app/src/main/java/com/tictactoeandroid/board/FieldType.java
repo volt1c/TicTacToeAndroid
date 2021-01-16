@@ -5,18 +5,16 @@ public enum FieldType {
     Circle('O'),
     Cross('X');
 
-    public final char aChar;
-
-    private FieldType(char c) {
-        this.aChar = c;
-    }
-
-    public static FieldType byValue(char value) {
+    public final char mark;
+    public static FieldType getByMark(char value) {
         for (FieldType e : values()) {
-            if (e.aChar == value) {
+            if (e.mark == value) {
                 return e;
             }
         }
         throw new IllegalArgumentException();
+    }
+    FieldType(char c) {
+        this.mark = c;
     }
 }

@@ -16,15 +16,11 @@ public class Board<TField> {
     public Board<TField> clone(){
         return new Board<TField>(width, height, fields, defValue);
     }
-    public int size(char t){
-
-        if (fields.length == 0)
-            return 0;
-        else if (t == 'w')
-            return width;
-        else if (t == 'h')
-            return height;
-        throw new IllegalArgumentException();
+    public int getHeight() {
+        return height;
+    }
+    public int getWidth() {
+        return width;
     }
     public TField[][] getFields() {
         return (TField[][]) fields;

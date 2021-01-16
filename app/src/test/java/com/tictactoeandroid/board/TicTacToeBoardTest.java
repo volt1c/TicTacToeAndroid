@@ -1,6 +1,5 @@
 package com.tictactoeandroid.board;
 
-import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.game.Play;
 
 import org.junit.Before;
@@ -12,12 +11,12 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
-public class TicTacToeGameBoardTest {
-    TicTacToeGameBoard gameBoard;
+public class TicTacToeBoardTest {
+    TicTacToeBoard gameBoard;
 
     @Before
     public void init(){
-        gameBoard = new TicTacToeGameBoard();
+        gameBoard = new TicTacToeBoard();
     }
     @Test
     public void testSetCircleOnEmptyFieldAndTryOverwriteCross(){

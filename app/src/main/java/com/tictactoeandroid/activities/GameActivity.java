@@ -2,8 +2,6 @@ package com.tictactoeandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,15 +10,12 @@ import android.widget.Button;
 
 import com.tictactoeandroid.R;
 import com.tictactoeandroid.board.FieldType;
-import com.tictactoeandroid.game.GameResult;
-import com.tictactoeandroid.game.Play;
 import com.tictactoeandroid.game.TicTacToeGame;
 import com.tictactoeandroid.player.Player;
 import com.tictactoeandroid.player.PlayerData;
 import com.tictactoeandroid.player.PlayerFactory;
 import com.tictactoeandroid.player.PlayerMark;
 import com.tictactoeandroid.player.PlayerType;
-import com.tictactoeandroid.player.RandomAIPlayer;
 import com.tictactoeandroid.player.UserPlayer;
 
 public class GameActivity extends AppCompatActivity {
@@ -32,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
 
-        PlayerType playerType = PlayerType.findByInt(sharedPreferences.getInt("PlayerType",0));
+        PlayerType playerType = PlayerType.getByIndex(sharedPreferences.getInt("PlayerType",0));
         PlayerData data = new PlayerData(playerType, PlayerMark.Circle);
 
         Player playerOne = new UserPlayer(PlayerMark.Cross);
@@ -61,10 +56,10 @@ public class GameActivity extends AppCompatActivity {
 
     }
     private String fieldToString(FieldType fieldType){
-        return String.valueOf(fieldType.aChar);
+        return String.valueOf(fieldType.mark);
     }
     private void end(){
-        int result = game.getEndResult().i;
+        int result = game.getGameResult().index;
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("gameResult",result);
@@ -78,18 +73,19 @@ public class GameActivity extends AppCompatActivity {
             isLastPlayOne = !isLastPlayOne;
         updateGUIBoard();
     }
+    // TODO
+    // partially move to TicTacToeGame.java
     public void play(int x, int y){
         if(!isLastPlayOne || !(game.getPlayerOne() instanceof UserPlayer)){
             playPlayer(x, y, 1);
         }
-        if (game.isEnd()) end();
+        if (game.isEnd())
+            end();
         if(isLastPlayOne || game.getPlayerTwo() instanceof UserPlayer){
             playPlayer(x, y, 2);
         }
-        if (game.isEnd()) end();
-
-        //if(!(game.getPlayerOne() instanceof UserPlayer) && !(game.getPlayerTwo() instanceof UserPlayer))
-        //    play(0,0);
+        if (game.isEnd())
+            end();
     }
     public void play1(View view){
         play(0, 0);

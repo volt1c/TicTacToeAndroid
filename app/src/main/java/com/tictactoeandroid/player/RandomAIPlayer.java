@@ -23,7 +23,6 @@ public class RandomAIPlayer implements Player{
         }
         return new Play(width, height, mark.toFieldType());
     }
-
     private int next(int value){
         return (value == 2)? 0 : value + 1;
     }

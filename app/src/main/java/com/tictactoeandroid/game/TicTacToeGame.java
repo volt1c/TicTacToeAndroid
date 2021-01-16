@@ -2,14 +2,14 @@ package com.tictactoeandroid.game;
 
 import com.tictactoeandroid.board.Board;
 import com.tictactoeandroid.board.FieldType;
-import com.tictactoeandroid.board.TicTacToeGameBoard;
+import com.tictactoeandroid.board.TicTacToeBoard;
 import com.tictactoeandroid.player.Player;
 
 public class TicTacToeGame {
-    private TicTacToeGameBoard gameBoard;
+    private TicTacToeBoard gameBoard;
     private Player playerOne;
     private Player playerTwo;
-    private GameResult endResult;
+    private GameResult gameResult;
 
     public Player getPlayerOne() {
         return playerOne;
@@ -49,32 +49,32 @@ public class TicTacToeGame {
         Board board = gameBoard.getGameBoard();
         for (int i = 0; i < 3; i++) {
             if (isRowEndGame(i, FieldType.Circle) || isColumnEndGame(i, FieldType.Circle) || areSlantsEndGame(FieldType.Circle)) {
-                endResult = GameResult.CircleWin;
+                gameResult = GameResult.CircleWin;
                 return true;
             }
             if(isRowEndGame(i, FieldType.Cross) || isColumnEndGame(i, FieldType.Cross) || areSlantsEndGame(FieldType.Cross)) {
-                endResult = GameResult.CrossWin;
+                gameResult = GameResult.CrossWin;
                 return true;
             }
         }
         if(board.isFull()) {
-            endResult = GameResult.Draw;
+            gameResult = GameResult.Draw;
             return true;
         }
         return false;
     }
-    public GameResult getEndResult() {
+    public GameResult getGameResult() {
         isEnd();
-        return endResult;
+        return gameResult;
     }
     public Board copyBoard(){
         return gameBoard.getGameBoard();
     }
 
     public TicTacToeGame(Player playerOne, Player playerTwo){
-        gameBoard = new TicTacToeGameBoard();
+        gameBoard = new TicTacToeBoard();
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        this.endResult = GameResult.None;
+        this.gameResult = GameResult.None;
     }
 }

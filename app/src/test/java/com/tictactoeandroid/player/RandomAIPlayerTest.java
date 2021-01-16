@@ -15,11 +15,7 @@ public class RandomAIPlayerTest {
     RandomAIPlayer player;
     @Before
     public void init(){
-        player = new RandomAIPlayer(FieldType.Cross);
-    }
-    @Test(expected = IllegalArgumentException.class)
-    public void testIllegalArgumentForConstructor(){
-        new RandomAIPlayer(FieldType.Empty);
+        player = new RandomAIPlayer(PlayerMark.Cross);
     }
     @Test
     public void testPlayRandomFieldWhenOneFieldEmpty(){

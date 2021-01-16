@@ -2,6 +2,10 @@ package com.tictactoeandroid.game;
 
 import com.tictactoeandroid.board.Board;
 import com.tictactoeandroid.board.FieldType;
+import com.tictactoeandroid.player.Player;
+import com.tictactoeandroid.player.PlayerData;
+import com.tictactoeandroid.player.PlayerMark;
+import com.tictactoeandroid.player.PlayerType;
 import com.tictactoeandroid.player.UserPlayer;
 
 import org.junit.Before;
@@ -16,8 +20,8 @@ public class TicTacToeGameTest {
     @Before
     public void init(){
         game = new TicTacToeGame(
-                new UserPlayer(FieldType.Cross),
-                new UserPlayer(FieldType.Circle)
+                new UserPlayer(PlayerMark.Cross),
+                new UserPlayer(PlayerMark.Circle)
         );
     }
     @Test

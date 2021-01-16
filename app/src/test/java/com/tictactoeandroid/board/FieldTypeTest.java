@@ -11,12 +11,12 @@ import static org.junit.Assert.*;
 public class FieldTypeTest {
     @Test
     public void testGetFieldsByValue() {
-        Assert.assertEquals(FieldType.Empty,  FieldType.byValue(' '));
-        assertEquals(FieldType.Circle, FieldType.byValue('O'));
-        assertEquals(FieldType.Cross,  FieldType.byValue('X'));
+        Assert.assertEquals(FieldType.Empty,  FieldType.getByMark(' '));
+        assertEquals(FieldType.Circle, FieldType.getByMark('O'));
+        assertEquals(FieldType.Cross,  FieldType.getByMark('X'));
     }
     @Test(expected = IllegalArgumentException.class)
     public void testTryGetFieldsByWrongValue() {
-        FieldType.byValue('☺');
+        FieldType.getByMark('☺');
     }
 }
