@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
 
-        PlayerType playerType = PlayerType.getByIndex(sharedPreferences.getInt("PlayerType",0));
+        PlayerType playerType = PlayerType.fromInt(sharedPreferences.getInt("PlayerType",0));
         PlayerData data = new PlayerData(playerType, PlayerMark.Circle);
 
         Player playerOne = new UserPlayer(PlayerMark.Cross);
