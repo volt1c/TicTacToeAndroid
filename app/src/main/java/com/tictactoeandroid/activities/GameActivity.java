@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity {
         return String.valueOf(fieldType.mark);
     }
     private void end(){
-        int result = game.getGameResult().index;
+        int result = game.getGameResult().toInt();
         SharedPreferences sharedPreferences = getSharedPreferences("shared_prefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("gameResult",result);
