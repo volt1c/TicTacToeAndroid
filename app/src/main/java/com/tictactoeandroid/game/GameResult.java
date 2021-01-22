@@ -7,7 +7,7 @@ public enum GameResult {
     Draw(2);
 
     public final int index;
-    public static GameResult getByIndex(int value) {
+    public static GameResult fromInt(int value) {
         for (GameResult e : values()) {
             if (e.index == value) {
                 return e;
