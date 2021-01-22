@@ -4,7 +4,7 @@ public enum PlayerType {
     RandomAI(0),
     User(1);
 
-    public final int index;
+    private final int index;
 
     public static PlayerType fromInt(int value)
             throws IllegalArgumentException{
@@ -15,6 +15,10 @@ public enum PlayerType {
         }
         throw new IllegalArgumentException();
     }
+    public int toInt(){
+        return index;
+    }
+
     PlayerType(int index) {
         this.index = index;
     }
