@@ -6,7 +6,7 @@ public enum PlayerType {
 
     public final int index;
 
-    public static PlayerType getByIndex(int value)
+    public static PlayerType fromInt(int value)
             throws IllegalArgumentException{
         for (PlayerType e : values()) {
             if (e.index == value) {
