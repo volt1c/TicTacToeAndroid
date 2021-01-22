@@ -6,7 +6,7 @@ public enum GameResult {
     CircleWin(1),
     Draw(2);
 
-    public final int index;
+    private final int index;
     public static GameResult fromInt(int value) {
         for (GameResult e : values()) {
             if (e.index == value) {
@@ -15,6 +15,10 @@ public enum GameResult {
         }
         throw new IllegalArgumentException();
     }
+    public int toInt(){
+        return index;
+    }
+
     GameResult(int index) {
         this.index = index;
     }
