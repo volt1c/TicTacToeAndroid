@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.tictactoeandroid.R;
+import com.tictactoeandroid.activities.listener.FieldOnClickListenerBuilder;
 import com.tictactoeandroid.board.FieldType;
 import com.tictactoeandroid.game.TicTacToeGame;
 import com.tictactoeandroid.player.Player;
@@ -21,6 +22,8 @@ import com.tictactoeandroid.player.UserPlayer;
 public class GameActivity extends AppCompatActivity {
     TicTacToeGame game;
     boolean isLastPlayOne;
+    Button[][] buttons;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,27 +36,34 @@ public class GameActivity extends AppCompatActivity {
         Player playerOne = new UserPlayer(PlayerMark.Cross);
         Player playerTwo = new PlayerFactory().create(data);
 
+        setButtons();
         game = new TicTacToeGame(playerOne, playerTwo);
         isLastPlayOne = false;
         updateGUIBoard();
     }
-    private void updateButton(int buttonId,int x, int y){
-        ((Button) findViewById(buttonId))
-                .setText(fieldToString(
+
+    public void setButtons() {
+        buttons = new Button[][]{
+                {(Button) findViewById(R.id.button1), (Button) findViewById(R.id.button2), (Button) findViewById(R.id.button3)},
+                {(Button) findViewById(R.id.button4), (Button) findViewById(R.id.button5), (Button) findViewById(R.id.button6)},
+                {(Button) findViewById(R.id.button7), (Button) findViewById(R.id.button8), (Button) findViewById(R.id.button9)}
+        };
+        FieldOnClickListenerBuilder builder = new FieldOnClickListenerBuilder();
+        for (int y = 0; y < 3; y++)
+            for (int x = 0; x < 3; x++)
+                buttons[y][x].setOnClickListener(builder.build(x, y, this));
+
+    }
+
+    private void updateButton(Button button, int x, int y){
+        button.setText(fieldToString(
                 (FieldType) game.copyBoard()
                         .getField(x,y)));
     }
     public void updateGUIBoard(){
-        updateButton(R.id.button1,0,0);
-        updateButton(R.id.button2,1,0);
-        updateButton(R.id.button3,2,0);
-        updateButton(R.id.button4,0,1);
-        updateButton(R.id.button5,1,1);
-        updateButton(R.id.button6,2,1);
-        updateButton(R.id.button7,0,2);
-        updateButton(R.id.button8,1,2);
-        updateButton(R.id.button9,2,2);
-
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                updateButton(buttons[i][j], j, i);
     }
     private String fieldToString(FieldType fieldType){
         return String.valueOf(fieldType.mark);
@@ -86,32 +96,5 @@ public class GameActivity extends AppCompatActivity {
         }
         if (game.isEnd())
             end();
-    }
-    public void play1(View view){
-        play(0, 0);
-    }
-    public void play2(View view){
-        play(1, 0);
-    }
-    public void play3(View view){
-        play(2, 0);
-    }
-    public void play4(View view){
-        play(0, 1);
-    }
-    public void play5(View view){
-        play(1, 1);
-    }
-    public void play6(View view){
-        play(2, 1);
-    }
-    public void play7(View view){
-        play(0, 2);
-    }
-    public void play8(View view){
-        play(1, 2);
-    }
-    public void play9(View view){
-        play(2, 2);
     }
 }
