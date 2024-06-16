@@ -2,4 +2,6 @@
     <string name="app_name">TicTacToeAndroid</string>
     <string name="gameTitle">TicTacToe</string>
     <string name="exitText">Exit</string>
+    <string name="empty" />
+    <string name="Field_contentDescription">board field</string>
 </resources>

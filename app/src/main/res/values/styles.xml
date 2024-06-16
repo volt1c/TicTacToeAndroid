@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="field_button">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:backgroundTint">#00FFFFFF</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:visibility">visible</item>
+        <item name="android:strokeColor">#00000000</item>
+        <item name="android:strokeWidth">3</item>
+        <item name="android:buttonCornerRadius" tools:ignore="NewApi">0dp</item>
+    </style>
+</resources>
