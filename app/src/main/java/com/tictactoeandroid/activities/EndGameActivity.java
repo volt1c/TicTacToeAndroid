@@ -20,7 +20,7 @@ public class EndGameActivity extends AppCompatActivity {
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
         int result = sp.getInt("gameResult",0);
-        TextView text= (TextView) findViewById(R.id.textView3);
+        TextView text= (TextView) findViewById(R.id.textView_result);
         if(result==0){
             text.setText("X Wins");
         }
