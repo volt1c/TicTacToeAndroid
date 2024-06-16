@@ -68,7 +68,6 @@
                 android:text="@string/empty"
                 android:textColor="#000000"
                 android:textSize="48sp"
-                android:textStyle="bold"
                 android:visibility="visible"
                 app:cornerRadius="0dp"
                 app:strokeColor="#000000"
